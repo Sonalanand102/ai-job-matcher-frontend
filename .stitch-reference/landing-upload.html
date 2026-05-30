@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SemanticMatch AI | Find Jobs with Semantic Precision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #030303;
+            color: #e5e1e4;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(160, 120, 255, 0.15) 0%, transparent 70%);
+        }
+
+        .pipeline-node-active {
+            box-shadow: 0 0 20px rgba(76, 215, 246, 0.4);
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes flow-line {
+            0% { stroke-dashoffset: 100; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        .flow-path {
+            stroke-dasharray: 10;
+            animation: flow-line 2s linear infinite;
+        }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#a078ff",
+                        "surface-container": "#201f22",
+                        "background": "#131315",
+                        "inverse-on-surface": "#313032",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "on-secondary": "#003640",
+                        "on-error": "#690005",
+                        "surface-bright": "#39393b",
+                        "inverse-surface": "#e5e1e4",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "tertiary": "#c0c1ff",
+                        "surface-container-highest": "#353437",
+                        "surface-tint": "#d0bcff",
+                        "primary-fixed-dim": "#d0bcff",
+                        "tertiary-fixed": "#e1e0ff",
+                        "on-secondary-fixed": "#001f26",
+                        "surface-container-low": "#1c1b1d",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "primary": "#d0bcff",
+                        "on-secondary-container": "#00424e",
+                        "surface": "#131315",
+                        "on-surface": "#e5e1e4",
+                        "on-surface-variant": "#cbc3d7",
+                        "on-primary-fixed-variant": "#5516be",
+                        "outline-variant": "#494454",
+                        "on-primary": "#3c0091",
+                        "primary-fixed": "#e9ddff",
+                        "secondary": "#4cd7f6",
+                        "outline": "#958ea0",
+                        "surface-dim": "#131315",
+                        "surface-variant": "#353437",
+                        "secondary-container": "#03b5d3",
+                        "on-primary-container": "#340080",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#acedff",
+                        "on-tertiary": "#1000a9",
+                        "on-background": "#e5e1e4",
+                        "inverse-primary": "#6d3bd7",
+                        "surface-container-high": "#2a2a2c",
+                        "on-primary-fixed": "#23005c",
+                        "on-tertiary-fixed": "#07006c",
+                        "on-tertiary-container": "#0d0096",
+                        "tertiary-container": "#8083ff",
+                        "surface-container-lowest": "#0e0e10"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "48px",
+                        "stack-lg": "32px",
+                        "margin-mobile": "16px",
+                        "section-gap": "80px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "body-md": ["Inter"],
+                        "label-xs": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Geist"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-xs": ["11px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="antialiased font-body-md selection:bg-primary/30">
+<!-- Top Navigation -->
+<nav class="bg-white/5 backdrop-blur-xl border-b border-white/10 docked full-width top-0 sticky z-50 shadow-xl">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold tracking-tighter text-on-surface">SemanticMatch AI</div>
+<div class="hidden md:flex items-center space-x-gutter">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">Dashboard</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-label-md text-label-md" href="#">Candidates</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-label-md text-label-md" href="#">Job Models</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-label-md text-label-md" href="#">Logs</a>
+</div>
+<div class="flex items-center space-x-stack-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all scale-95 active:scale-90" data-icon="code"></button>
+<button class="bg-primary-container text-on-primary-container px-stack-md py-2 rounded-lg font-label-md text-label-md font-bold transition-transform hover:scale-105 active:scale-95">
+                    Upload Resume
+                </button>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[819px] flex flex-col items-center justify-center text-center px-margin-mobile md:px-margin-desktop hero-glow overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse-glow"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] animate-pulse-glow" style="animation-delay: 1.5s;"></div>
+</div>
+<div class="relative z-10 max-w-4xl space-y-stack-lg reveal-on-scroll">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-label-xs font-label-xs mb-stack-sm">
+<span class="material-symbols-outlined text-[14px]" data-icon="auto_awesome"></span>
+                    POWERED BY PGVECTOR &amp; LLMS
+                </div>
+<h1 class="font-display-lg text-display-lg text-white leading-tight">
+                    Find Jobs Using <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">AI Semantic Matching</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Leverage vector embeddings and hybrid retrieval to find your perfect role based on meaning, not just keywords. Our neural search engine understands your career trajectory.
+                </p>
+<div class="pt-stack-md flex flex-col sm:flex-row gap-stack-md justify-center">
+<button class="px-8 py-4 bg-primary text-on-primary rounded-xl font-headline-md text-headline-md font-bold shadow-[0_0_20px_rgba(208,188,255,0.3)] hover:shadow-[0_0_30px_rgba(208,188,255,0.5)] transition-all transform hover:-translate-y-1" onclick="scrollToUpload()">
+                        Upload Resume
+                    </button>
+<button class="px-8 py-4 glass-panel text-white rounded-xl font-headline-md text-headline-md font-bold hover:bg-white/10 transition-all">
+                        View Demo
+                    </button>
+</div>
+</div>
+</section>
+<!-- Resume Upload Section -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto reveal-on-scroll" id="upload-section">
+<div class="glass-panel rounded-3xl p-stack-lg border border-white/10 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+<div class="border-2 border-dashed border-white/10 rounded-2xl p-12 text-center transition-all duration-500 relative z-10 hover:border-primary/50 group/drop" id="drop-zone">
+<div class="space-y-stack-md" id="upload-idle">
+<div class="w-20 h-20 bg-surface-container-highest rounded-full flex items-center justify-center mx-auto mb-stack-md transition-transform group-hover/drop:scale-110">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="cloud_upload"></span>
+</div>
+<h3 class="font-headline-md text-headline-md text-white">Drag &amp; drop your resume</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Supports PDF, DOCX, or Markdown up to 10MB</p>
+<button class="mt-stack-md px-6 py-2 bg-white/5 border border-white/10 rounded-lg font-label-md text-label-md hover:bg-white/10 transition-colors">
+                            Select File
+                        </button>
+</div>
+<div class="hidden space-y-stack-lg py-8" id="upload-active">
+<div class="flex justify-center">
+<div class="relative">
+<div class="w-24 h-24 rounded-full border-4 border-primary/20 border-t-primary animate-spin"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="description"></span>
+</div>
+</div>
+</div>
+<div class="space-y-stack-sm">
+<h3 class="font-headline-md text-headline-md text-white">Generating Embeddings...</h3>
+<div class="w-full max-w-xs mx-auto bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[65%] rounded-full shadow-[0_0_10px_rgba(208,188,255,0.8)]"></div>
+</div>
+<p class="font-label-xs text-label-xs text-secondary">Neural parser active: extracting skill vectors</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pipeline Visualization -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto reveal-on-scroll">
+<div class="text-center mb-section-gap">
+<h2 class="font-headline-lg text-headline-lg text-white mb-stack-sm">The Semantic Engine Pipeline</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">See how our distributed architecture processes your profile through seven layers of AI matching.</p>
+</div>
+<div class="relative py-12">
+<!-- SVG Connector Lines (Desktop) -->
+<svg class="hidden md:block absolute top-1/2 left-0 w-full h-1 -translate-y-1/2 pointer-events-none" style="z-index: 0;">
+<path class="flow-path" d="M 100 0 L 1100 0" fill="none" stroke="url(#line-gradient)" stroke-width="2"></path>
+<defs>
+<lineargradient id="line-gradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#a078ff" stop-opacity="0.2"></stop>
+<stop offset="50%" stop-color="#4cd7f6" stop-opacity="0.5"></stop>
+<stop offset="100%" stop-color="#a078ff" stop-opacity="0.2"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="flex flex-col md:flex-row justify-between items-center gap-stack-lg relative z-10 overflow-x-auto pb-8">
+<!-- Pipeline Step 1 -->
+<div class="flex-shrink-0 group cursor-default">
+<div class="w-16 h-16 rounded-2xl glass-panel flex items-center justify-center mb-stack-sm transition-all group-hover:pipeline-node-active group-hover:border-primary/50 group-hover:-translate-y-1">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="upload_file"></span>
+</div>
+<p class="font-label-xs text-label-xs text-center text-on-surface-variant uppercase tracking-widest">Resume Upload</p>
+</div>
+<!-- Pipeline Step 2 -->
+<div class="flex-shrink-0 group cursor-default">
+<div class="w-16 h-16 rounded-2xl glass-panel flex items-center justify-center mb-stack-sm transition-all group-hover:pipeline-node-active group-hover:border-secondary/50 group-hover:-translate-y-1">
+<span class="material-symbols-outlined text-secondary text-2xl" data-icon="schema"></span>
+</div>
+<p class="font-label-xs text-label-xs text-center text-on-surface-variant uppercase tracking-widest">Embeddings</p>
+</div>
+<!-- Pipeline Step 3 -->
+<div class="flex-shrink-0 group cursor-default">
+<div class="w-16 h-16 rounded-2xl glass-panel flex items-center justify-center mb-stack-sm transition-all group-hover:pipeline-node-active group-hover:border-primary/50 group-hover:-translate-y-1">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="search_insights"></span>
+</div>
+<p class="font-label-xs text-label-xs text-center text-on-surface-variant uppercase tracking-widest">Vector Search</p>
+</div>
+<!-- Pipeline Step 4 -->
+<div class="flex-shrink-0 group cursor-default">
+<div class="w-16 h-16 rounded-2xl glass-panel flex items-center justify-center mb-stack-sm border-secondary/50 pipeline-node-active scale-110">
+<span class="material-symbols-outlined text-secondary text-2xl" data-icon="hub"></span>
+</div>
+<p class="font-label-xs text-label-xs text-center text-secondary uppercase tracking-widest font-bold">Hybrid retrieval</p>
+</div>
+<!-- Pipeline Step 5 -->
+<div class="flex-shrink-0 group cursor-default">
+<div class="w-16 h-16 rounded-2xl glass-panel flex items-center justify-center mb-stack-sm transition-all group-hover:pipeline-node-active group-hover:border-primary/50 group-hover:-translate-y-1">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="database"></span>
+</div>
+<p class="font-label-xs text-label-xs text-center text-on-surface-variant uppercase tracking-widest">Redis Cache</p>
+</div>
+<!-- Pipeline Step 6 -->
+<div class="flex-shrink-0 group cursor-default">
+<div class="w-16 h-16 rounded-2xl glass-panel flex items-center justify-center mb-stack-sm transition-all group-hover:pipeline-node-active group-hover:border-secondary/50 group-hover:-translate-y-1">
+<span class="material-symbols-outlined text-secondary text-2xl" data-icon="reorder"></span>
+</div>
+<p class="font-label-xs text-label-xs text-center text-on-surface-variant uppercase tracking-widest">Reranking</p>
+</div>
+<!-- Pipeline Step 7 -->
+<div class="flex-shrink-0 group cursor-default">
+<div class="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mb-stack-sm transition-all group-hover:scale-110 shadow-[0_0_15px_rgba(160,120,255,0.4)]">
+<span class="material-symbols-outlined text-on-primary text-2xl" data-icon="task_alt"></span>
+</div>
+<p class="font-label-xs text-label-xs text-center text-white uppercase tracking-widest">Final Matches</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Insights Bento Grid -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter reveal-on-scroll">
+<div class="md:col-span-2 glass-panel rounded-3xl p-stack-lg overflow-hidden relative group">
+<img alt="Analytics Dashboard" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-700" data-alt="A high-tech analytics dashboard interface with glowing cyan and violet data visualizations, heatmaps, and vector cluster maps displayed on a sleek glass screen. The background is a dark, professional workspace with soft ambient light hitting the edges of high-end tech equipment. The overall aesthetic is focused on semantic data intelligence and sophisticated modern AI technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMf8yMBsBASk6mHWJ5R9A-wFNk6jb5uNUUETkDm9M6rlKMLLGw5RTX-WynsWEoC9sKJGwq0u5ehJPuPKeuQgKQDgpkgfohTMINPWqWxTtuwO24YKJzSM0Bg4K7oNLI73-zeFVgbm1zRIAPZ96OsdyOFO12au3OiXbDLbVRb1cZrdiBG2ha6SKZHsYbMuXxJ5R04J-nJEWYOULJ-pcsYeA76omjP8zcGAMY-Kk-GE30oLFSYocLSVU_95Dwu4t8kY3hbJCp1dNwswIN"/>
+<div class="relative z-10 space-y-stack-sm h-full flex flex-col justify-end min-h-[300px]">
+<h3 class="font-headline-lg text-headline-lg text-white">Vector Similarity Clustering</h3>
+<p class="text-on-surface-variant max-w-md">Our AI maps your skills into a multidimensional vector space, finding adjacencies that traditional keyword search misses entirely.</p>
+</div>
+</div>
+<div class="glass-panel rounded-3xl p-stack-lg border-primary/20 bg-primary/5 flex flex-col justify-between">
+<div class="space-y-stack-md">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="speed"></span>
+<h3 class="font-headline-md text-headline-md text-white">Millisecond Latency</h3>
+<p class="text-on-surface-variant text-body-sm">Search across 50M+ job listings in under 50ms using pgvector HNSW indexing.</p>
+</div>
+<div class="pt-stack-md flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="font-label-xs text-label-xs text-on-surface-variant">INFRASTRUCTURE: OPERATIONAL</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest full-width py-stack-lg border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto space-y-stack-md md:space-y-0">
+<div class="font-headline-md text-headline-md text-on-surface-variant font-bold">SemanticMatch AI</div>
+<p class="font-body-sm text-body-sm text-secondary">© 2024 SemanticMatch AI. Built with pgvector, Redis, and LLMs.</p>
+<div class="flex gap-stack-md">
+<a class="text-on-surface-variant font-label-xs text-label-xs hover:text-secondary-fixed-dim transition-all" href="#">API Docs</a>
+<a class="text-on-surface-variant font-label-xs text-label-xs hover:text-secondary-fixed-dim transition-all" href="#">Privacy</a>
+<a class="text-on-surface-variant font-label-xs text-label-xs hover:text-secondary-fixed-dim transition-all" href="#">Infrastructure Status</a>
+<a class="text-on-surface-variant font-label-xs text-label-xs hover:text-secondary-fixed-dim transition-all" href="#">GitHub</a>
+</div>
+</div>
+</footer>
+<script>
+        // Reveal animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+        // Smooth scroll to upload
+        function scrollToUpload() {
+            document.getElementById('upload-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Fake Upload Logic
+        const dropZone = document.getElementById('drop-zone');
+        const uploadIdle = document.getElementById('upload-idle');
+        const uploadActive = document.getElementById('upload-active');
+
+        dropZone.addEventListener('click', () => {
+            uploadIdle.classList.add('hidden');
+            uploadActive.classList.remove('hidden');
+            
+            // Simulating complete
+            setTimeout(() => {
+                uploadActive.innerHTML = `
+                    <div class="space-y-stack-md animate-pulse">
+                        <span class="material-symbols-outlined text-green-400 text-5xl" data-icon="verified"></span>
+                        <h3 class="font-headline-md text-headline-md text-white">Semantic Profile Created</h3>
+                        <p class="text-on-surface-variant">42 match results found in 43ms</p>
+                        <button onclick="location.reload()" class="text-primary font-label-md">Clear and restart</button>
+                    </div>
+                `;
+            }, 3000);
+        });
+
+        // Simple drag & drop visual feedback
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('bg-primary/5', 'border-primary');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('bg-primary/5', 'border-primary');
+        });
+    </script>
+</body></html>

@@ -2,7 +2,7 @@ import axios, { AxiosError, type AxiosProgressEvent } from "axios";
 import type { ApiErrorBody } from "@/types/api";
 
 const baseURL =
-  process.env.NEXT_PUBLIC_API_URL ?? "http://54.210.95.6:8000";
+  process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
 export const api = axios.create({
   baseURL,

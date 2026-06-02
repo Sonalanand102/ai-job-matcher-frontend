@@ -134,6 +134,7 @@ Backend Repository:
 
 <img width="1470" height="836" alt="Screenshot 2026-05-31 at 5 38 02 AM" src="https://github.com/user-attachments/assets/c4a5e078-07fc-4d4b-9792-af198e6baaf4" />
 
+
 <img width="1470" height="833" alt="Screenshot 2026-05-31 at 5 38 21 AM" src="https://github.com/user-attachments/assets/3e6ecc98-33b1-4c4a-a51d-bb13383847fe" />
 
 ### Processing Pipeline
@@ -147,6 +148,7 @@ Backend Repository:
 ### Architecture Overview
 
 <img width="1470" height="836" alt="Screenshot 2026-05-31 at 5 44 38 AM" src="https://github.com/user-attachments/assets/12c1c76f-6d30-4e2f-b365-ce9218c71c6d" />
+
 
 <img width="1470" height="831" alt="Screenshot 2026-05-31 at 5 44 51 AM" src="https://github.com/user-attachments/assets/4695f150-cbe3-4233-a586-a74262a37af0" />
 
